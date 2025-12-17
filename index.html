@@ -84,25 +84,32 @@
             border-bottom: 1px solid var(--glass-border);
         }
 
+        /* Updated logo to be a flex container with image */
         .logo {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--primary);
-            letter-spacing: 4px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
 
-        /* Added logo image styling */
         .logo-img {
-            height: 60px;
-            width: auto;
+            height: 55px;
+            width: 55px;
             border-radius: 50%;
             object-fit: cover;
             transition: transform 0.3s ease;
+            border: 2px solid var(--primary);
         }
 
         .logo-img:hover {
             transform: scale(1.05);
+        }
+
+        .logo-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: 3px;
         }
 
         .nav-links {
@@ -160,10 +167,28 @@
             color: var(--text-light);
             line-height: 1.1;
             margin-bottom: 20px;
+            /* Added flex to center logo with text */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
         }
 
         .hero-title span {
             color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        /* Added hero logo styling */
+        .hero-logo {
+            height: 100px;
+            width: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--primary);
+            box-shadow: 0 10px 40px rgba(232, 184, 109, 0.3);
         }
 
         .hero-subtitle {
@@ -439,9 +464,10 @@
 
     <!-- Header -->
     <header class="header">
+        <!-- Logo with image and text -->
         <div class="logo">
             <img src="/images/473374478-625582080034882-8949591754393387329-n.jpg" alt="Tropico Fast Food Logo" class="logo-img">
-            <span>Tropico</span>
+            <span class="logo-text">TROPICO</span>
         </div>
         <nav class="nav-links">
             <a href="#menu">Menu</a>
@@ -455,8 +481,13 @@
         <!-- Hero Section -->
         <section class="hero">
             <span class="hero-badge">Restaurant • Beni Saf</span>
+            <!-- Added logo in the middle of title -->
             <h1 class="hero-title">
-                Bienvenue chez<br><span>Tropico</span>
+                Bienvenue chez
+                <span>
+                    <img src="/images/473374478-625582080034882-8949591754393387329-n.jpg" alt="Tropico Logo" class="hero-logo">
+                    Tropico
+                </span>
             </h1>
             <p class="hero-subtitle">
                 Découvrez notre menu digital et laissez-vous séduire par nos saveurs exotiques et authentiques.
