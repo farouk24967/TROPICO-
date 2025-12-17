@@ -292,27 +292,21 @@
             gap: 10px;
         }
 
-        .iframe-dot {
-            width: 12px;
-            height: 12px;
+        /* Replaced dot style with logo style */
+        .iframe-logo {
+            width: 35px;
+            height: 35px;
             border-radius: 50%;
-            background: var(--primary);
+            object-fit: cover;
+            border: 2px solid var(--primary);
         }
 
-        .iframe-dot:nth-child(2) { background: #E8B86D; opacity: 0.6; }
-        .iframe-dot:nth-child(3) { background: #E8B86D; opacity: 0.3; }
-
-        .iframe-wrapper {
-            width: 100%;
-            height: 70vh;
-            min-height: 500px;
-        }
-
-        .iframe-wrapper iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-            display: block;
+        .iframe-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary);
+            letter-spacing: 1px;
         }
 
         /* --- SOCIAL SECTION --- */
@@ -517,9 +511,8 @@
             </div>
             <div class="iframe-container">
                 <div class="iframe-header">
-                    <span class="iframe-dot"></span>
-                    <span class="iframe-dot"></span>
-                    <span class="iframe-dot"></span>
+                    <img src="/images/473374478-625582080034882-8949591754393387329-n.jpg" alt="Tropico Logo" class="iframe-logo">
+                    <span class="iframe-title">Menu Tropico</span>
                 </div>
                 <div class="iframe-wrapper">
                     <iframe 
