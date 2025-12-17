@@ -292,21 +292,21 @@
             gap: 10px;
         }
 
-        /* Replaced dot style with logo style */
-        .iframe-logo {
-            width: 35px;
-            height: 35px;
+        /* Restored original dot styles for iframe header */
+        .iframe-dot {
+            width: 12px;
+            height: 12px;
             border-radius: 50%;
-            object-fit: cover;
-            border: 2px solid var(--primary);
+            background: var(--primary);
+            opacity: 0.6;
         }
 
-        .iframe-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--primary);
-            letter-spacing: 1px;
+        .iframe-dot:first-child {
+            opacity: 1;
+        }
+
+        .iframe-wrapper {
+            padding: 20px;
         }
 
         /* --- SOCIAL SECTION --- */
@@ -460,7 +460,7 @@
     <header class="header">
         <!-- Logo with image and text -->
         <div class="logo">
-            <img src="public/images/473374478-625582080034882-8949591754393387329-n.jpg" alt="Tropico Fast Food Logo" class="logo-img">
+            <img src="/images/473374478-625582080034882-8949591754393387329-n.jpg" alt="Tropico Fast Food Logo" class="logo-img">
             <span class="logo-text">TROPICO</span>
         </div>
         <nav class="nav-links">
@@ -479,7 +479,7 @@
             <h1 class="hero-title">
                 Bienvenue chez
                 <span>
-                    <img src="public/images/473374478-625582080034882-8949591754393387329-n.jpg" alt="Tropico Logo" class="hero-logo">
+                    <img src="/images/473374478-625582080034882-8949591754393387329-n.jpg" alt="Tropico Logo" class="hero-logo">
                     Tropico
                 </span>
             </h1>
@@ -511,8 +511,9 @@
             </div>
             <div class="iframe-container">
                 <div class="iframe-header">
-                    <img src="public/images/473374478-625582080034882-8949591754393387329-n.jpg" alt="Tropico Logo" class="iframe-logo">
-                    <span class="iframe-title">Menu Tropico</span>
+                    <span class="iframe-dot"></span>
+                    <span class="iframe-dot"></span>
+                    <span class="iframe-dot"></span>
                 </div>
                 <div class="iframe-wrapper">
                     <iframe 
