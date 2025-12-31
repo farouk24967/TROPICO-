@@ -85,7 +85,6 @@
             border-bottom: 1px solid var(--glass-border);
         }
 
-        /* Updated logo to be a flex container with image */
         .logo {
             display: flex;
             align-items: center;
@@ -168,7 +167,6 @@
             color: var(--text-light);
             line-height: 1.1;
             margin-bottom: 20px;
-            /* Added flex to center logo with text */
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -182,7 +180,6 @@
             gap: 20px;
         }
 
-        /* Added hero logo styling */
         .hero-logo {
             height: 100px;
             width: 100px;
@@ -275,54 +272,114 @@
             margin: 0 auto;
         }
 
-        /* --- IFRAME CONTAINER --- */
-        .iframe-container {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            overflow: hidden;
-            backdrop-filter: blur(20px);
-            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.5);
-            /* Make the container larger and centered */
-            max-width: 900px;
-            margin: 0 auto;
+        /* --- SEARCH BAR --- */
+        .search-box {
+            margin: 20px auto 15px;
+            max-width: 600px;
+            position: relative;
         }
-
-        .iframe-header {
-            padding: 20px 30px;
-            border-bottom: 1px solid var(--glass-border);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        /* Restored original dot styles for iframe header */
-        .iframe-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: var(--primary);
-            opacity: 0.6;
-        }
-
-        .iframe-dot:first-child {
-            opacity: 1;
-        }
-
-        .iframe-wrapper {
-            padding: 20px;
-            /* Add flex centering for iframe */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        /* Added proper iframe sizing */
-        .iframe-wrapper iframe {
+        .search-input {
             width: 100%;
-            height: 700px;
-            border: none;
+            padding: 14px 20px 14px 50px;
             border-radius: 12px;
+            border: 1px solid var(--glass-border);
+            background: var(--glass-bg);
+            color: white;
+            font-size: 1rem;
+            outline: none;
+        }
+        .search-input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(232,184,109,0.2);
+        }
+        .search-icon {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #888;
+        }
+
+        /* --- TABS --- */
+        .tabs {
+            display: flex;
+            overflow-x: auto;
+            padding: 0 15px;
+            gap: 12px;
+            margin-bottom: 25px;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .tabs::-webkit-scrollbar { display: none; }
+        .tab {
+            white-space: nowrap;
+            padding: 10px 20px;
+            border-radius: 50px;
+            background: var(--glass-bg);
+            color: #ccc;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            border: 1px solid var(--glass-border);
+        }
+        .tab.active {
+            background: var(--primary);
+            color: var(--secondary);
+            box-shadow: 0 4px 12px rgba(232,184,109,0.3);
+        }
+        .tab:hover:not(.active) {
+            background: #333;
+            color: var(--primary);
+        }
+
+        /* --- MENU ITEMS --- */
+        .item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--glass-border);
+            opacity: 1;
+            transition: opacity 0.2s;
+            background: var(--glass-bg);
+            border-radius: 12px;
+            margin-bottom: 12px;
+        }
+        .item.hidden {
+            display: none;
+        }
+        .item-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 12px;
+            object-fit: cover;
+            background: #333;
+            flex-shrink: 0;
+        }
+        .item-content {
+            flex: 1;
+        }
+        .item-name { 
+            font-weight: 600; 
+            font-size: 1.05rem; 
+            color: white;
+        }
+        .item-desc { 
+            font-size: 0.9rem; 
+            color: #aaa; 
+            margin-top: 4px; 
+            font-weight: 300;
+            line-height: 1.4;
+        }
+        .item-price {
+            background: var(--primary);
+            color: var(--secondary);
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-weight: 700;
+            min-width: 70px;
+            text-align: center;
         }
 
         /* --- SOCIAL SECTION --- */
@@ -433,6 +490,20 @@
                 justify-content: center;
             }
 
+            .search-box {
+                max-width: 100%;
+            }
+
+            .item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+            }
+            .item-price {
+                align-self: flex-end;
+                margin-top: 6px;
+            }
+
             .social-section {
                 padding: 30px 20px;
             }
@@ -460,14 +531,11 @@
         .hero-subtitle { animation: fadeInUp 0.8s ease 0.6s both; }
         .cta-buttons { animation: fadeInUp 0.8s ease 0.8s both; }
         .menu-section { animation: fadeInUp 0.8s ease 1s both; }
- 
 
-
-.social-link.instagram:hover {
-  color: #3f0707;
-  transform: scale(1.2);
-}
-
+        .social-link.instagram:hover {
+            color: #3f0707;
+            transform: scale(1.2);
+        }
     </style>
 </head>
 <body>
@@ -475,14 +543,13 @@
     <!-- Video Background -->
     <div class="video-background">
         <video autoplay muted loop playsinline>
-            <source src="public/images/1219(1).mp4" type="video/mp4">
+            <source src="public/images/1219.mp4" type="video/mp4">
         </video>
     </div>
     <div class="video-overlay"></div>
 
     <!-- Header -->
     <header class="header">
-        <!-- Logo with image and text -->
         <div class="logo">
             <img src="public/images/473374478-625582080034882-8949591754393387329-n.jpg" alt="Tropico Fast Food Logo" class="logo-img">
             <span class="logo-text">TROPICO</span>
@@ -499,7 +566,6 @@
         <!-- Hero Section -->
         <section class="hero">
             <span class="hero-badge">Restaurant • Beni Saf</span>
-            <!-- Added logo in the middle of title -->
             <h1 class="hero-title">
                 Bienvenue chez
                 <span>
@@ -533,20 +599,24 @@
                 <h2 class="section-title">Notre Menu</h2>
                 <div class="section-line"></div>
             </div>
-            <div class="iframe-container">
-                <div class="iframe-header">
-                    <span class="iframe-dot"></span>
-                    <span class="iframe-dot"></span>
-                    <span class="iframe-dot"></span>
-                </div>
-                <div class="iframe-wrapper">
-                    <iframe 
-                        allowfullscreen="allowfullscreen" 
-                        scrolling="no" 
-                        src="https://heyzine.com/flip-book/354929af50.html">
-                    </iframe>
-                </div>
+
+            <div class="search-box">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" id="search" class="search-input" placeholder="Rechercher un plat...">
             </div>
+
+            <div class="tabs" id="tabs">
+                <div class="tab active" data-category="all">Tout</div>
+                <div class="tab" data-category="sandwich">Sandwich</div>
+                <div class="tab" data-category="pizza">Pizza</div>
+                <div class="tab" data-category="tacos">Tacos</div>
+                <div class="tab" data-category="burger">Burger</div>
+                <div class="tab" data-category="box">Box</div>
+                <div class="tab" data-category="gratins">Gratins</div>
+            </div>
+
+            <div id="menu-container"></div>
+
         </section>
 
         <!-- Social Section -->
@@ -558,16 +628,10 @@
                         <path d="M14 13.5h2.5l1-4H14v-2c0-1.03 0-2 2-2h1.5V2.14c-.326-.043-1.557-.14-2.857-.14C11.928 2 10 3.657 10 6.7v2.8H7v4h3V22h4v-8.5z"/>
                     </svg>
                 </a>
-              <a href="https://www.instagram.com/tropico460/" 
-   target="_blank" 
-   class="social-link instagram" 
-   aria-label="Instagram">
-
-  <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
-    <path d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm10 2c1.7 0 3 1.3 3 3v10c0 1.7-1.3 3-3 3H7c-1.7 0-3-1.3-3-3V7c0-1.7 1.3-3 3-3h10zm-5 3.5A4.5 4.5 0 1 0 16.5 12 4.5 4.5 0 0 0 12 7.5zm0 7.4A2.9 2.9 0 1 1 14.9 12 2.9 2.9 0 0 1 12 14.9zm4.8-7.9a1.1 1.1 0 1 0 0 2.2 1.1 1.1 0 0 0 0-2.2z"/>
-  </svg>
-</a>
-
+                <a href="https://www.instagram.com/tropico460/" target="_blank" class="social-link instagram" aria-label="Instagram">
+                    <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
+                        <path d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm10 2c1.7 0 3 1.3 3 3v10c0 1.7-1.3 3-3 3H7c-1.7 0-3-1.3-3-3V7c0-1.7 1.3-3 3-3h10zm-5 3.5A4.5 4.5 0 1 0 16.5 12 4.5 4.5 0 0 0 12 7.5zm0 7.4A2.9 2.9 0 1 1 14.9 12 2.9 2.9 0 0 1 12 14.9zm4.8-7.9a1.1 1.1 0 1 0 0 2.2 1.1 1.1 0 0 0 0-2.2z"/>
+                    </svg>
                 </a>
                 <a href="https://tiktok.com/@tropico_restaurant" target="_blank" class="social-link" aria-label="TikTok">
                     <svg viewBox="0 0 24 24" fill="currentColor">
@@ -599,6 +663,134 @@
         </footer>
 
     </main>
+
+    <script>
+        // Données du menu basées sur votre image
+        const menuData = [
+            // SANDWICH
+            { cat: "sandwich", name: "Spécial", desc: "", price: "200 DA", img: "https://images.unsplash.com/photo-1513104890138-7c749659a591?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" },
+            { cat: "sandwich", name: "Spécial Maxi", desc: "", price: "300 DA", img: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" },
+            { cat: "sandwich", name: "Shawarma", desc: "", price: "300 DA", img: "https://images.unsplash.com/photo-1593560708920-61dd98c46a4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" },
+            { cat: "sandwich", name: "Tandoori", desc: "", price: "350 DA", img: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" },
+            { cat: "sandwich", name: "Curry", desc: "", price: "350 DA", img: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" },
+            { cat: "sandwich", name: "Kebda", desc: "", price: "350 DA", img: "https://images.unsplash.com/photo-1565299580369-77a854c03479?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" },
+            { cat: "sandwich", name: "Perfeito", desc: "Poulet + Frites", price: "400 DA", img: "https://images.unsplash.com/photo-1594854152740-4be3d7849d5a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" },
+            { cat: "sandwich", name: "Suprême", desc: "", price: "400 DA", img: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" },
+            { cat: "sandwich", name: "Le Steak", desc: "", price: "450 DA", img: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" },
+            { cat: "sandwich", name: "Tropical Mix", desc: "", price: "500 DA", img: "https://images.unsplash.com/photo-1593560708920-61dd98c46a4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" },
+            { cat: "sandwich", name: "Dopamine", desc: "Poulet + Omelette", price: "600 DA", img: "https://images.unsplash.com/photo-1513104890138-7c749659a591?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" },
+
+            // PIZZA
+            { cat: "pizza", name: "Marguarita", desc: "S.Tomate+Fromage+Olive", price: "250 DA", img: "https://images.unsplash.com/photo-1513104890138-7c749659a591?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" },
+            { cat: "pizza", name: "Blanca", desc: "S.Tomate+Poulet+Fromage", price: "300 DA", img: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" },
+            { cat: "pizza", name: "Végétarienne", desc: "S.Tomate+Fromage+Champignons+Olives+Poivrons", price: "350 DA", img: "https://images.unsplash.com/photo-1593560708920-61dd98c46a4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" },
+            { cat: "pizza", name: "Poulet", desc: "S.Tomate+Poulet+Olive", price: "400 DA", img: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" },
+            { cat: "pizza", name: "Tuna", desc: "S.Tomate+Poulet+Olive", price: "400 DA", img: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" },
+            { cat: "pizza", name: "Balance", desc: "S.Tomate+Fromage+Poulet+Viande Hachée", price: "400 DA", img: "https://images.unsplash.com/photo-1565299580369-77a854c03479?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" },
+            { cat: "pizza", name: "Viande", desc: "S.Tomate+Poulet+Viande Hachée", price: "500 DA", img: "https://images.unsplash.com/photo-1594854152740-4be3d7849d5a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" },
+            { cat: "pizza", name: "4 Fromages", desc: "S.Tomate+Fromage+Gruyère+Camembert", price: "450 DA", img: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" },
+            { cat: "pizza", name: "4 Saisons", desc: "À votre choix", price: "700 DA", img: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" },
+            { cat: "pizza", name: "Peperoni", desc: "S.Tomate+Poulet+Jambon", price: "500 DA", img: "https://images.unsplash.com/photo-1593560708920-61dd98c46a4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" },
+            { cat: "pizza", name: "Scandinave", desc: "S.Tomate+Poulet+Puré+Sauce Gratinée", price: "500 DA", img: "https://images.unsplash.com/photo-1513104890138-7c749659a591?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" },
+            { cat: "pizza", name: "Calzone x3", desc: "3 Fromages+Poulet+Viande Hachée", price: "700 DA", img: "https://images.unsplash.com/photo-1565299580369-77a854c03479?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" },
+            { cat: "pizza", name: "Mega", desc: "Tous les ingrédients", price: "2000 DA", img: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" },
+
+            // TACOS
+            { cat: "tacos", name: "Poulet", desc: "", price: "400 DA", img: "https://images.unsplash.com/photo-1513104890138-7c749659a591?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" },
+            { cat: "tacos", name: "Viande", desc: "", price: "500 DA", img: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" },
+            { cat: "tacos", name: "Poulet Pané", desc: "", price: "500 DA", img: "https://images.unsplash.com/photo-1593560708920-61dd98c46a4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" },
+            { cat: "tacos", name: "Tropico", desc: "", price: "600 DA", img: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" },
+            { cat: "tacos", name: "Crispy", desc: "", price: "600 DA", img: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" },
+            { cat: "tacos", name: "Mix", desc: "", price: "650 DA", img: "https://images.unsplash.com/photo-1565299580369-77a854c03479?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" },
+
+            // BURGER
+            { cat: "burger", name: "Cheese", desc: "", price: "200 DA", img: "https://images.unsplash.com/photo-1513104890138-7c749659a591?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" },
+            { cat: "burger", name: "Big", desc: "", price: "400 DA", img: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" },
+            { cat: "burger", name: "Mix", desc: "", price: "300 DA", img: "https://images.unsplash.com/photo-1593560708920-61dd98c46a4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" },
+
+            // BOX
+            { cat: "box", name: "Crispy", desc: "", price: "650 DA", img: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" },
+            { cat: "box", name: "Shawarma", desc: "", price: "550 DA", img: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" },
+
+            // GRATINS
+            { cat: "gratins", name: "Viande", desc: "", price: "500 DA", img: "https://images.unsplash.com/photo-1565299580369-77a854c03479?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" },
+            { cat: "gratins", name: "Poulet", desc: "", price: "400 DA", img: "https://images.unsplash.com/photo-1594854152740-4be3d7849d5a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" },
+            { cat: "gratins", name: "Mix", desc: "", price: "500 DA", img: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" },
+
+            // SUPPLÉMENTS
+            { cat: "sandwich", name: "Suppléments Fromage", desc: "+100 DA", price: "+100 DA", img: "https://images.unsplash.com/photo-1513104890138-7c749659a591?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" },
+            { cat: "pizza", name: "Sauce Blanche", desc: "+100 DA", price: "+100 DA", img: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" },
+            { cat: "pizza", name: "Bordure Fromage", desc: "+150 DA", price: "+150 DA", img: "https://images.unsplash.com/photo-1593560708920-61dd98c46a4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" },
+            { cat: "pizza", name: "Charcuterie", desc: "+150 DA", price: "+150 DA", img: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" },
+            { cat: "pizza", name: "Bordure Fromage", desc: "+100 DA", price: "+100 DA", img: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" },
+        ];
+
+        // Générer HTML
+        function renderMenu(category = 'all') {
+            const container = document.getElementById('menu-container');
+            if (!container) return;
+
+            let currentSection = '';
+            let html = '';
+
+            const filtered = menuData.filter(item => 
+              category === 'all' || item.cat === category
+            );
+
+            filtered.forEach(item => {
+              if (item.cat !== currentSection && category === 'all') {
+                currentSection = item.cat;
+                const title = currentSection
+                  .replace(/-/g, ' ')
+                  .replace(/\b\w/g, l => l.toUpperCase());
+                html += `<h2 class="section-title">${title}</h2>`;
+              }
+
+              // Item normal
+              const searchTerms = (item.name + ' ' + item.desc).toLowerCase();
+              html += `
+                <div class="item" data-search="${searchTerms}" data-cat="${item.cat}">
+                  <img src="${item.img}" alt="${item.name}" class="item-image">
+                  <div class="item-content">
+                    <div class="item-name">${item.name}</div>
+                    ${item.desc ? `<div class="item-desc">${item.desc}</div>` : ''}
+                  </div>
+                  <div class="item-price">${item.price}</div>
+                </div>`;
+            });
+
+            container.innerHTML = html || '<div style="text-align:center;padding:40px;color:#777">Aucun plat trouvé.</div>';
+        }
+
+        // Initial render
+        renderMenu();
+
+        // Recherche
+        document.getElementById('search').addEventListener('input', function() {
+            const term = this.value.toLowerCase();
+            const items = document.querySelectorAll('.item');
+            items.forEach(item => {
+                const text = item.getAttribute('data-search') || 
+                             (item.querySelector('.item-name')?.textContent + ' ' + 
+                              item.querySelector('.item-desc')?.textContent).toLowerCase();
+                item.style.display = text.includes(term) ? 'flex' : 'none';
+            });
+        });
+
+        // Tabs
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                renderMenu(tab.dataset.category);
+            });
+        });
+
+        // Effet "fade in"
+        document.body.style.opacity = '0';
+        document.body.style.transition = 'opacity 0.4s';
+        setTimeout(() => document.body.style.opacity = '1', 50);
+    </script>
 
 </body>
 </html>
