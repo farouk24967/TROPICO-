@@ -536,9 +536,106 @@
             color: #3f0707;
             transform: scale(1.2);
         }
+
+        /* --- WELCOME MODAL --- */
+        .welcome-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(15px);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.5s ease;
+            padding: 20px;
+        }
+
+        .welcome-modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .welcome-modal-content {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 500px;
+            text-align: center;
+            transform: translateY(50px) scale(0.9);
+            opacity: 0;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .welcome-modal-overlay.active .welcome-modal-content {
+            transform: translateY(0) scale(1);
+            opacity: 1;
+        }
+
+        .welcome-modal-logo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--primary);
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(232, 184, 109, 0.3);
+        }
+
+        .welcome-modal-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            color: var(--text-light);
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+
+        .welcome-modal-title span {
+            color: var(--primary);
+        }
+
+        .welcome-modal-text {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .welcome-modal-btn {
+            width: 100%;
+            justify-content: center;
+            padding: 14px 24px;
+            font-size: 1.1rem;
+        }
+
+        @media (max-width: 768px) {
+            .welcome-modal-content {
+                padding: 30px 20px;
+            }
+            .welcome-modal-title {
+                font-size: 2rem;
+            }
+        }
     </style>
 </head>
 <body>
+
+    <!-- Welcome Modal -->
+    <div class="welcome-modal-overlay" id="welcomeModal">
+        <div class="welcome-modal-content">
+            <img src="public/images/473374478-625582080034882-8949591754393387329-n.jpg" alt="Tropico Logo" class="welcome-modal-logo">
+            <h2 class="welcome-modal-title">Bienvenue chez <span>Tropico</span></h2>
+            <p class="welcome-modal-text">Découvrez notre menu digital et laissez-vous séduire par nos saveurs exotiques et authentiques.</p>
+            <button class="btn btn-primary welcome-modal-btn" onclick="closeWelcomeModal()">Voir le Menu</button>
+        </div>
+    </div>
 
     <!-- Video Background -->
     <div class="video-background">
@@ -790,6 +887,26 @@
         document.body.style.opacity = '0';
         document.body.style.transition = 'opacity 0.4s';
         setTimeout(() => document.body.style.opacity = '1', 50);
+
+        // Welcome Modal Logic
+        function closeWelcomeModal() {
+            const modal = document.getElementById('welcomeModal');
+            if (modal) {
+                modal.classList.remove('active');
+                sessionStorage.setItem('tropico_welcome_shown', 'true');
+            }
+        }
+
+        window.addEventListener('load', () => {
+            if (!sessionStorage.getItem('tropico_welcome_shown')) {
+                setTimeout(() => {
+                    const modal = document.getElementById('welcomeModal');
+                    if (modal) {
+                        modal.classList.add('active');
+                    }
+                }, 800);
+            }
+        });
     </script>
 
 </body>
